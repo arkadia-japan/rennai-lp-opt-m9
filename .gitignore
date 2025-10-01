@@ -9,8 +9,8 @@
 *.avi
 
 # Allow specific hero images
-!images/renai_opt_pc.jpg
-!images/renai_opt_sp.jpg
+!images/renai_opt_pc_hq.jpg
+!images/renai_opt_sp_hq.jpg
 
 # OS generated files
 .DS_Store
