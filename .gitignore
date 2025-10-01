@@ -1,12 +1,16 @@
 # Large binary files
 *.pdf
-*.png
+# *.png  # Commented out to allow hero images
 *.jpg
 *.jpeg
 *.gif
 *.mp4
 *.mov
 *.avi
+
+# Allow specific hero images
+!images/renai_opt_pc.jpg
+!images/renai_opt_sp.jpg
 
 # OS generated files
 .DS_Store
