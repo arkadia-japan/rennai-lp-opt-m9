@@ -11,6 +11,8 @@
 # Allow specific hero images
 !images/renai_opt_pc_hq.jpg
 !images/renai_opt_sp_hq.jpg
+!images/renai_opt_pc.webp
+!images/renai_opt_sp2.webp
 
 # OS generated files
 .DS_Store
