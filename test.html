@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画像表示テスト</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-image { max-width: 100%; height: auto; border: 2px solid #ccc; margin: 10px 0; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>画像表示テスト</h1>
+    
+    <h2>WebP画像テスト</h2>
+    <img src="images/renai_opt_pc.webp" alt="PC WebP" class="test-image" onload="showStatus('pc-webp', true)" onerror="showStatus('pc-webp', false)">
+    <div id="pc-webp-status" class="status">読み込み中...</div>
+    
+    <img src="images/renai_opt_sp2.webp" alt="SP WebP" class="test-image" onload="showStatus('sp-webp', true)" onerror="showStatus('sp-webp', false)">
+    <div id="sp-webp-status" class="status">読み込み中...</div>
+    
+    <h2>JPEG画像テスト</h2>
+    <img src="images/renai_opt_pc_hq.jpg" alt="PC JPEG" class="test-image" onload="showStatus('pc-jpg', true)" onerror="showStatus('pc-jpg', false)">
+    <div id="pc-jpg-status" class="status">読み込み中...</div>
+    
+    <img src="images/renai_opt_sp_hq.jpg" alt="SP JPEG" class="test-image" onload="showStatus('sp-jpg', true)" onerror="showStatus('sp-jpg', false)">
+    <div id="sp-jpg-status" class="status">読み込み中...</div>
+    
+    <script>
+        function showStatus(id, success) {
+            const element = document.getElementById(id + '-status');
+            if (success) {
+                element.textContent = '✅ 画像の読み込みに成功しました';
+                element.className = 'status success';
+            } else {
+                element.textContent = '❌ 画像の読み込みに失敗しました';
+                element.className = 'status error';
+            }
+        }
+        
+        // 5秒後にまだ読み込み中の場合はエラーとして扱う
+        setTimeout(() => {
+            const statuses = ['pc-webp-status', 'sp-webp-status', 'pc-jpg-status', 'sp-jpg-status'];
+            statuses.forEach(id => {
+                const element = document.getElementById(id);
+                if (element.textContent === '読み込み中...') {
+                    element.textContent = '❌ タイムアウト: 画像の読み込みに失敗しました';
+                    element.className = 'status error';
+                }
+            });
+        }, 5000);
+    </script>
+</body>
+</html>
